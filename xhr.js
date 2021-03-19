@@ -31,18 +31,11 @@ const sendHttpRequest = (method, url, data) => {
 };
 
 const generateToken = (callback) => {
-	var data = new FormData();
-	data.append("username", "");
-	data.append("password", "");
-	data.append("referer", "https://www.arcgis.com");
-	data.append("f", "json");
-	data.append("expiration", "60");
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "https://www.arcgis.com/sharing/rest/generateToken");
-	xhr.send(data);
-	xhr.onload = function () {
-		let result = JSON.parse(xhr.responseText);
-		callback(result['token']);
+		
+	if (window.location.hash) {
+		callback(window.location.hash);
+	} else {
+		window.location.replace('https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id=ASdBUonq0kdFrBGt&display=default&redirect_uri=https://zachary-sutherby.github.io/&parent=https://zachary-sutherby.github.io/&locale=en&response_type=token&expiration=720')
 	};
 	
 };
@@ -97,11 +90,12 @@ const checkJobStatus = (jobId, token) => {
 		console.log(responseData);
 		document.getElementById("generate_report").innerHTML = responseData['jobStatus'];
 		if (responseData['jobStatus'] == 'esriJobExecuting') {
-			checkJobStatus(responseData['jobId'], token);
 			document.getElementById("generate_report").innerHTML = responseData['jobStatus'];
+			setTimeout(checkJobStatus(responseData['jobId'], token), 10000);			
 		} else if (responseData['jobStatus'] == 'esriJobSucceeded') {
 			console.log(responseData['resultInfo'].resultFiles[0].url);
-			document.getElementById("generate_report").innerHTML = responseData['resultInfo'].resultFiles[0].url;
+			// document.getElementById("generate_report").innerHTML = responseData['resultInfo'].resultFiles[0].url;
+			document.getElementById("generate_report").innerHTML = "Download Report Here";
 			document.getElementById("generate_report").href = responseData['resultInfo'].resultFiles[0].url;
 		}
 	});	
