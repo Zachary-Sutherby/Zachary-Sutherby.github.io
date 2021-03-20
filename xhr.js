@@ -40,7 +40,7 @@ const estimate = () => {
   sendHttpRequest('GET', 'https://survey123.arcgis.com/api/featureReport/estimateCredits?featureLayerUrl=https://services9.arcgis.com/QqYTCcI9gte4fVq0/ArcGIS/rest/services/Water_Stations_editing/FeatureServer/0&queryParameters={"where": "objectId='+oid+'"}&templateItemId=746317007791465291b4a939cfc50638&token='+token).then(responseData => {
 	console.log(responseData['resultInfo'].cost);
 	//return responseData['resultInfo'].cost
-	document.getElementById("estimate_credits").innerHTML = responseData['resultInfo'].cost;
+	document.getElementById("estimate_credits").innerHTML = "Estimated credit cost: " + responseData['resultInfo'].cost;
 	//return x.innerHTML = responseData['resultInfo'].cost;
 	});
   
