@@ -20,10 +20,10 @@ require([
   esriId.registerOAuthInfos([info]);
 
   esriId
-    //.checkSignInStatus(info.portalUrl + "/sharing")
-    //.then(() => {
-      //return esriId.getCredential(info.portalUrl + "/sharing");
-    //})
+    .checkSignInStatus(info.portalUrl + "/sharing")
+    .then(() => {
+      return esriId.getCredential(info.portalUrl + "/sharing");
+    })
     .then((credential) => {
       token = credential.token;
     })
