@@ -12,7 +12,7 @@ require([
 ], (OAuthInfo, esriId) => {
   let info = new OAuthInfo({
     // Swap this ID out with registered application ID
-    appId: "ASdBUonq0kdFrBGt",
+    appId: "NwFJlqjUNiglPvNF",
     // Uncomment the next line and update if using your own portal
     portalUrl: "https://www.arcgis.com",
     popup: false
@@ -82,8 +82,8 @@ function estimate() {
   console.log(oid);
 
   return sendHttpRequest('GET',
-      'https://survey123.arcgis.com/api/featureReport/estimateCredits?featureLayerUrl=https://services5.arcgis.com/jMCHJcLe13FaKCFB/arcgis/rest/services/service_9f1cd3408c3042c8b29300a049a6469a/FeatureServer/0&queryParameters={"where": "objectId=' +
-      oid + '"}&templateItemId=d6f2895b4a74492b9fdcab1d3eaa2f1f&token=' + token)
+      'https://survey123.arcgis.com/api/featureReport/estimateCredits?featureLayerUrl=https://services9.arcgis.com/QqYTCcI9gte4fVq0/ArcGIS/rest/services/Water_Stations_editing/FeatureServer/0&queryParameters={"where": "objectId=' +
+      oid + '"}&templateItemId=746317007791465291b4a939cfc50638&token=' + token)
     .then(responseData => {
       console.log(responseData['resultInfo'].cost);
       
@@ -101,12 +101,12 @@ function createReport() {
   console.log(oid);
 
   return sendHttpRequest('POST', 'https://survey123.arcgis.com/api/featureReport/createReport/submitJob', {
-      featureLayerUrl: 'https://services5.arcgis.com/jMCHJcLe13FaKCFB/arcgis/rest/services/service_9f1cd3408c3042c8b29300a049a6469a/FeatureServer/0',
+      featureLayerUrl: 'https://services9.arcgis.com/QqYTCcI9gte4fVq0/ArcGIS/rest/services/Water_Stations_editing/FeatureServer/0',
       queryParameters: '{"where":"objectId=' + oid + '","orderByFields":"||EditDate DESC, objectid ASC"}',
-      templateItemId: 'd6f2895b4a74492b9fdcab1d3eaa2f1f',
+      templateItemId: '746317007791465291b4a939cfc50638',
       token: token,
-      surveyItemId: '02035e027391421494267c33dcb974e3',
-      outputFormat: 'docx'
+      surveyItemId: 'e7709174ba48426c880e504e11319970',
+      outputFormat: 'pdf'
     })
     .then(responseData => {
       console.log(responseData);
