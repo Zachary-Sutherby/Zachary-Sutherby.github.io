@@ -11,9 +11,8 @@ button {
   background: #5102ac;
   border: 1px solid #5102ac;
   color: white;
-  cursor: pointer;
-  padding: 1.25rem 2.5rem;
-  font-size: 1.5rem;
+  cursor: pointer;  
+  width: 100px;
 }
 
 button:focus {
