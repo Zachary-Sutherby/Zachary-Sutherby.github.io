@@ -12,7 +12,7 @@ button {
   border: 1px solid #5102ac;
   color: white;
   cursor: pointer;  
-  width: 100px;
+  width: 200px;
 }
 
 button:focus {
