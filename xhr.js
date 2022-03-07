@@ -55,7 +55,7 @@ const createReport = () => {
 	console.log(token);
 	sendHttpRequest('POST', 'https://survey123.arcgis.com/api/featureReport/createReport/submitJob', {
 	featureLayerUrl: 'https://services9.arcgis.com/QqYTCcI9gte4fVq0/ArcGIS/rest/services/Water_Stations_editing/FeatureServer/0',
-	queryParameters: '{"where":"objectId=' + oid + '","orderByFields":"||EditDate DESC, objectid ASC"}',
+	queryParameters: '{"objectIds":"' + oid + '","orderByFields":"||EditDate DESC, objectid ASC"}',
 	templateItemId: '746317007791465291b4a939cfc50638',
 	token: token,
 	surveyItemId: 'e7709174ba48426c880e504e11319970',
